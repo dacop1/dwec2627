@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 6</title>
+</head>
+<body>
+  <script>
+    // Pedimos la velocidad en km/h y la convertimos a número
+    let kmh = Number(prompt("Introduce una velocidad en km/h:"));
+
+    // 1 km = 1000 m y 1 h = 3600 s, por tanto m/s = km/h / 3.6
+    let ms = kmh / 3.6;
+
+    // toFixed(2) redondea a 2 decimales
+    alert(kmh + " km/h equivalen a " + ms.toFixed(2) + " m/s");
+  </script>
+</body>
+</html>

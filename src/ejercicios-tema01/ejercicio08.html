@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 8</title>
+</head>
+<body>
+  <script>
+    // Comillas dobles que contienen comillas simples
+    let texto1 = "Ella dijo: 'Hola'";
+
+    // Comillas simples que contienen comillas dobles
+    let texto2 = 'Él respondió: "Buenos días"';
+
+    // Comillas escapadas con \ (para usar el mismo tipo dentro)
+    let texto3 = "Esto es una \"cita\" con comillas escapadas";
+
+    // Comillas invertidas (template literals): permiten variables con ${}
+    let nombre = "Dani";
+    let texto4 = `Me llamo ${nombre} y puedo usar "dobles" y 'simples'`;
+
+    document.write(texto1 + "<br>");
+    document.write(texto2 + "<br>");
+    document.write(texto3 + "<br>");
+    document.write(texto4);
+  </script>
+</body>
+</html>
