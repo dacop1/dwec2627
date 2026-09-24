@@ -8,11 +8,11 @@
   <script>
     // prompt() devuelve texto (string), así que lo convertimos con Number()
     // Si no, "2" + "3" daría "23" en vez de 5
-    let num1 = Number(prompt("Introduce el primer número:"));
-    let num2 = Number(prompt("Introduce el segundo número:"));
+    var num1 = parseFloat(prompt("Introduce el primer número:"));
+    var num2 = parseFloat(prompt("Introduce el segundo número:"));
 
     // Operador suma
-    let suma = num1 + num2;
+    var suma = num1 + num2;
 
     alert("La suma de " + num1 + " y " + num2 + " es: " + suma);
   </script>

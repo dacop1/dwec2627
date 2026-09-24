@@ -4,18 +4,16 @@
   <meta charset="UTF-8">
   <title>Ejercicio 4</title>
 </head>
-<body>
-  <script>
-    // Variable con un número (let permite cambiar su valor)
-    let numero = 25;
-    alert("El valor de la variable es: " + numero);
+<body onload="variable()">
 
-    // Constante matemática: Math.PI ya viene incluida en JavaScript
-    alert("El valor de PI es: " + Math.PI);
+<script>
+  function variable(){
+    var n = 5.2;
+    alert("Valor de la variable: " + n);
+    const PI = Math.PI;
+    alert("Valor de la constante: " + PI);
+  }
+</script>
 
-    // También podemos crear nuestra propia constante con const
-    const IVA = 0.21;
-    alert("La constante IVA vale: " + IVA);
-  </script>
 </body>
 </html>
