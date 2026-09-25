@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body onload="espar()">
+    <script>
+        function espar(){
+            var num1 = parseFloat(prompt("Introduce un número "));
+            /*Usamos el === en este caso debido porque queremos
+            asegurarnos de que el resto es exactamente el número 0*/
+            if (num1 % 2 === 0){
+                alert("Es un número par");
+            }
+            else{
+                alert("Es un número impar")
+            }
+        }
+    </script>
+</body>
+</html>
