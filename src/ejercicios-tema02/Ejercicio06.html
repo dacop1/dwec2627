@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        var a = Number(prompt("introduce coeficiente a:"))
+        var b = Number(prompt("introduce coeficiente b:"))
+        var c = Number(prompt("introduce coeficiente c:"))
+
+        var res1,res2;
+        var raiz = b*b-4*a*c;
+
+        if (raiz >= 0 && a !=0){
+            res1 = (-b + Math.sqrt(raiz)) / (2*a);
+            res2 = (-b - Math.sqrt(raiz)) / (2*a);
+            alert("El resultado es haciendo la suma es : " + res1 + "El resultado haciendo la resta es: " + res2);
+        } else {
+            alert("revisar coeficiente");
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
