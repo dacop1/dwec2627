@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Factorial</title>
+</head>
+<body onload="factorial()">
+
+<script>
+    function factorial() {
+        var n = Number(prompt("Introduce un número para calcular su factorial:"));
+
+        if (n < 0) {
+            alert("No existe el factorial de números negativos.");
+            return;
+        }
+
+        var resultado = 1;
+
+        // factorial con for
+        for (var i = 1; i <= n; i++) {
+            resultado = resultado * i;
+        }
+
+        alert("El factorial de " + n + " es: " + resultado);
+    }
+</script>
+
+</body>
+</html>

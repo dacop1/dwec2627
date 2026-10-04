@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function main() {
+            let figura = null;
+            let medidas = null;
+            let salir = false;
+
+            while (!salir) {
+                let opcion = prompt(
+                    "MENÚ\n" +
+                    "1. Elegir figura\n" +
+                    "2. Introducir medidas\n" +
+                    "3. Calcular volumen\n" +
+                    "4. Calcular área\n" +
+                    "5. Salir"
+                );
+
+                switch (opcion) {
+                    case "1":
+                        figura = elegirFigura();
+                        medidas = null; // Reiniciar medidas si cambia la figura
+                        break;
+                    case "2":
+                        if (figura) {
+                            medidas = pedirMedidas(figura);
+                        } else {
+                            alert("Primero debes elegir una figura.");
+                        }
+                        break;
+                    case "3":
+                        if (figura && medidas) {
+                            alert("Volumen: " + calcularVolumen(figura, medidas));
+                        } else {
+                            alert("Debes elegir figura y medidas primero.");
+                        }
+                        break;
+                    case "4":
+                        if (figura && medidas) {
+                            alert("Área: " + calcularArea(figura, medidas));
+                        } else {
+                            alert("Debes elegir figura y medidas primero.");
+                        }
+                        break;
+                    case "5":
+                        salir = true;
+                        alert("Programa finalizado.");
+                        break;
+                    default:
+                        alert("Opción no válida.");
+                }
+            }
+        }
+
+        function elegirFigura() {
+            let opcion = prompt(
+                "Elige una figura:\n" +
+                "1. Cubo\n" +
+                "2. Esfera\n" +
+                "3. Cilindro"
+            );
+            switch (opcion) {
+                case "1": return "cubo";
+                case "2": return "esfera";
+                case "3": return "cilindro";
+                default:
+                    alert("Figura no válida.");
+                    return null;
+            }
+        }
+
+        function pedirMedidas(figura) {
+            switch (figura) {
+                case "cubo":
+                    let lado = parseFloat(prompt("Introduce el lado:"));
+                    return { lado: lado };
+                case "esfera":
+                    let radio = parseFloat(prompt("Introduce el radio:"));
+                    return { radio: radio };
+                case "cilindro":
+                    let radioC = parseFloat(prompt("Introduce el radio:"));
+                    let altura = parseFloat(prompt("Introduce la altura:"));
+                    return { radio: radioC, altura: altura };
+                default:
+                    alert("Figura no válida."); return null;
+            }
+        }
+
+        function calcularVolumen(figura, medidas) {
+            switch (figura) {
+                case "cubo":
+                    return Math.pow(medidas.lado, 3);
+                case "esfera":
+                    return (4 / 3) * Math.PI * Math.pow(medidas.radio, 3);
+                case "cilindro":
+                    return Math.PI * Math.pow(medidas.radio, 2) * medidas.altura;
+                default:
+                    return "Figura no válida.";
+            }
+        }
+
+        function calcularArea(figura, medidas) {
+            switch (figura) {
+                case "cubo":
+                    return 6 * Math.pow(medidas.lado, 2);
+                case "esfera":
+                    return 4 * Math.PI * Math.pow(medidas.radio, 2);
+                case "cilindro":
+                    return 2 * Math.PI * medidas.radio * (medidas.radio + medidas.altura);
+                default:
+                    return "Figura no válida.";
+            }
+        }
+
+        main();
+    </script>
+</head>
+<body>
+</body>
+</html>

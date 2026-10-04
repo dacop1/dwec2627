@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nominas</title>
+</head>
+<body onload="nominas()">
+
+<script>
+    function nominas() {
+        var nomina = parseFloat(prompt("Introduce una nómina"));
+        var antiguedad = parseFloat(prompt("Introduce su antigüedad"));
+        var sueldofinal;
+
+        if (nomina < 750 && antiguedad >= 10) {
+            sueldofinal = nomina + nomina * 0.10;
+            alert("Obtienes una prima del 10%. Su sueldo final queda: " + sueldofinal);
+        }
+        else if (nomina >= 750 && antiguedad >= 10) {
+            sueldofinal = nomina + nomina * 0.05;
+            alert("Obtienes una prima del 5%. Su sueldo final queda: " + sueldofinal);
+        }
+        else {
+            alert("No obtiene prima. Su sueldo queda igual: " + nomina);
+        }
+    }
+</script>
+
+</body>
+</html>

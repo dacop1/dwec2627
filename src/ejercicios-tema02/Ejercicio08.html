@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Descomposición en factores primos</title>
+</head>
+<body>
+<script>
+
+    let a = Number(prompt("Introduce el número"));
+
+    let factPrimos = descomponerEnPrimos(a);
+
+    alert("Factores primos de " + a + ": " + factPrimos.join(" *"));
+
+    function descomponerEnPrimos(numero){
+        if (numero <= 1 || !Number(numero)){
+            return ["Ingrese número mayor que 1"];
+        }
+
+        const factores = [];
+        let divisor = 2;
+        let n = numero;
+
+        while (n > 1){
+            while (n % divisor === 0){
+                factores.push(divisor);
+                n = n / divisor;
+            }
+            divisor++;
+        }
+
+        return factores;
+    }
+
+</script>
+</body>
+</html>
