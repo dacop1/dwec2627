@@ -3,46 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        /* =========================================================
-           FUNCIÓN PRINCIPAL
-           Aquí viven las variables del programa (figura, medidas,
-           salir). Al estar dentro de una función son LOCALES, así
-           que no hay variables globales (requisito E).
-           ========================================================= */
         function main() {
-            let figura = null;   // Guardará "cubo", "esfera" o "cilindro"
-            let medidas = null;  // Guardará un objeto con las medidas de la figura
-            let salir = false;   // Controla el bucle: cuando sea true, el programa termina
+            let figura = null;
+            let medidas = null;
+            let salir = false;
 
-            // El menú se repite mientras salir sea false (requisito C)
             while (!salir) {
-
-                // Ventana emergente con el menú (requisito A).
-                // \n hace un salto de línea para que cada opción salga en su propia línea.
-                // Lo que escriba el usuario se guarda en "opcion" como TEXTO.
                 let opcion = prompt(
-                    "MENÚ\n" +
+                    "Ponemos aquí el menú...\n\n" +
                     "1. Elegir figura\n" +
-                    "2. Pedir medidas\n" +
+                    "2. Introducir medidas\n" +
                     "3. Calcular volumen\n" +
                     "4. Calcular área\n" +
                     "5. Salir"
                 );
 
-                // Comparamos "opcion" (lo que tecleó el usuario) con cada caso (requisito B)
                 switch (opcion) {
-
                     case "1":
-                        // Llamamos a elegirFigura y guardamos lo que devuelve
                         figura = elegirFigura();
-                        // Si cambia la figura, las medidas anteriores ya no sirven
                         medidas = null;
                         break;
 
                     case "2":
-                        // Solo se pueden pedir medidas si ya hay una figura elegida
                         if (figura) {
-                            // Le pasamos la figura como parámetro (no hace falta variable global)
                             medidas = pedirMedidas(figura);
                         } else {
                             alert("Primero debes elegir una figura.");
@@ -50,42 +33,32 @@
                         break;
 
                     case "3":
-                        // Para calcular necesitamos las DOS cosas: figura y medidas
                         if (figura && medidas) {
-                            // toFixed(2) redondea el resultado a 2 decimales
-                            alert("Volumen: " + calcularVolumen(figura, medidas).toFixed(2));
+                            alert("Volumen: " + calcularVolumen(figura, medidas));
                         } else {
                             alert("Debes elegir figura y medidas primero.");
                         }
                         break;
 
                     case "4":
-                        // Misma comprobación que en el volumen
                         if (figura && medidas) {
-                            alert("Área: " + calcularArea(figura, medidas).toFixed(2));
+                            alert("Área: " + calcularArea(figura, medidas));
                         } else {
                             alert("Debes elegir figura y medidas primero.");
                         }
                         break;
 
                     case "5":
-                        alert("Programa finalizado.");
-                        // Esta línea hace que el while deje de repetirse y el programa termine
                         salir = true;
+                        alert("Programa finalizado.");
                         break;
 
                     default:
-                        // Cualquier otra cosa (letras, números fuera de rango, vacío...)
                         alert("Opción no válida.");
                 }
             }
         }
 
-        /* =========================================================
-           OPCIÓN 1: ELEGIR FIGURA
-           Pide un número al usuario y lo traduce al nombre de la
-           figura, que es lo que entienden las demás funciones.
-           ========================================================= */
         function elegirFigura() {
             let opcion = prompt(
                 "Elige una figura:\n" +
@@ -94,100 +67,69 @@
                 "3. Cilindro"
             );
 
-            // prompt devuelve texto, por eso comparamos con "1" y no con 1
             switch (opcion) {
-                case "1": return "cubo";      // return sale de la función, no hace falta break
+                case "1": return "cubo";
                 case "2": return "esfera";
                 case "3": return "cilindro";
                 default:
-                    // Si escribe otra cosa o pulsa Cancelar
-                    alert("Figura no válida.");
-                    return null;                // null = "no hay figura elegida"
+                    alert("Opción no válida.");
+                    return null;
             }
         }
 
-        /* =========================================================
-           FUNCIÓN AUXILIAR: PEDIR UN NÚMERO VÁLIDO
-           Pide un número y repite la pregunta hasta que sea un
-           número mayor que 0. Así no se repite código en
-           pedirMedidas.
-           ========================================================= */
-        function pedirNumero(mensaje) {
-            // Number() convierte el texto del prompt en número
-            let valor = Number(prompt(mensaje));
-
-            // isNaN(valor) es true si lo escrito no era un número (ej: "hola").
-            // Si pulsa Cancelar, Number(null) da 0, y 0 tampoco es válido.
-            while (isNaN(valor) || valor <= 0) {
-                valor = Number(prompt("Valor no válido. " + mensaje));
-            }
-            return valor;
-        }
-
-        /* =========================================================
-           OPCIÓN 2: PEDIR MEDIDAS
-           Según la figura, pide unas medidas u otras y las devuelve
-           dentro de un objeto. Cada figura necesita datos distintos:
-           cubo -> lado, esfera -> radio, cilindro -> radio y altura.
-           ========================================================= */
         function pedirMedidas(figura) {
-            // Comparamos el parámetro "figura" con los textos que devuelve elegirFigura
             switch (figura) {
-                case "cubo": {
-                    // Las llaves { } limitan las variables let a este case
-                    let lado = pedirNumero("Introduce el lado del cubo:");
-                    return { lado: lado };      // Objeto con una propiedad: lado
-                }
-                case "esfera": {
-                    let radio = pedirNumero("Introduce el radio de la esfera:");
-                    return { radio: radio };    // Objeto con una propiedad: radio
-                }
-                case "cilindro": {
-                    let radioC = pedirNumero("Introduce el radio del cilindro:");
-                    let altura = pedirNumero("Introduce la altura del cilindro:");
-                    return { radio: radioC, altura: altura };  // Objeto con dos propiedades
-                }
+                case "cubo":
+                    let lado = parseFloat(prompt("Introduce el lado del cubo:"));
+                    return { lado: lado };
+
+                case "esfera":
+                    let radio = parseFloat(prompt("Introduce el radio de la esfera:"));
+                    return { radio: radio };
+
+                case "cilindro":
+                    let radioC = parseFloat(prompt("Introduce el radio del cilindro:"));
+                    let altura = parseFloat(prompt("Introduce la altura del cilindro:"));
+                    return { radio: radioC, altura: altura };
+
                 default:
                     alert("Figura no válida.");
                     return null;
             }
         }
 
-        /* =========================================================
-           OPCIÓN 3: VOLUMEN
-           Recibe la figura y sus medidas, y devuelve el volumen.
-           ========================================================= */
         function calcularVolumen(figura, medidas) {
             switch (figura) {
                 case "cubo":
-                    return Math.pow(medidas.lado, 3);                  // lado³
+                    return Math.pow(medidas.lado, 3);
+
                 case "esfera":
-                    return (4 / 3) * Math.PI * Math.pow(medidas.radio, 3);   // 4/3 · π · r³
+                    return (4 / 3) * Math.PI * Math.pow(medidas.radio, 3);
+
                 case "cilindro":
-                    return Math.PI * Math.pow(medidas.radio, 2) * medidas.altura;  // π · r² · h
+                    return Math.PI * Math.pow(medidas.radio, 2) * medidas.altura;
+
                 default:
-                    return 0;   // Devolvemos 0 (y no texto) para que .toFixed(2) no falle
+                    return "Figura no válida.";
             }
         }
 
-        /* =========================================================
-           OPCIÓN 4: ÁREA
-           Recibe la figura y sus medidas, y devuelve el área total.
-           ========================================================= */
         function calcularArea(figura, medidas) {
             switch (figura) {
                 case "cubo":
-                    return 6 * Math.pow(medidas.lado, 2);              // 6 · lado²
+                    return 6 * Math.pow(medidas.lado, 2);
+
                 case "esfera":
-                    return 4 * Math.PI * Math.pow(medidas.radio, 2);   // 4 · π · r²
+                    return 4 * Math.PI * Math.pow(medidas.radio, 2);
+
                 case "cilindro":
-                    return 2 * Math.PI * medidas.radio * (medidas.radio + medidas.altura); // 2πr(r+h)
+                    return 2 * Math.PI * medidas.radio * (medidas.radio + medidas.altura);
+
                 default:
-                    return 0;
+                    return "Figura no válida.";
             }
         }
 
-        // Arrancamos el programa llamando a la función principal
         main();
     </script>
 </head>
