@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pedirMatriz(filas, columnas) {
+            matriz = [];
+
+            for (let i = 0; i < filas; i++) {
+                const fila = [];
+                for (let j = 0; j < columnas; j++) {
+                    const valor = Number(prompt(`Valor [${i}][${j}]:`));
+                    fila.push(valor);
+                }
+                matriz.push(fila);
+            }
+
+            return matriz;
+        }
+
+        function separarParesImpares(matriz) {
+            pares = [];
+            impares = [];
+
+            for (let i = 0; i < matriz.length; i++) {
+                for (let j = 0; j < matriz[i].length; j++) {
+                    if (matriz[i][j] % 2 === 0) {
+                        pares.push(matriz[i][j]);
+                    } else {
+                        impares.push(matriz[i][j]);
+                    }
+                }
+            }
+
+            return { pares, impares };
+        }
+
+        // Programa principal
+        filas = parseInt(prompt("Número de filas:"));
+        columnas = parseInt(prompt("Número de columnas:"));
+
+        matriz = pedirMatriz(filas, columnas);
+        resultado = separarParesImpares(matriz);
+
+        alert("Pares: [" + resultado.pares.join(", ") + "]\n" +
+            "Impares: [" + resultado.impares.join(", ") + "]");
+    </script>
+</body>
+</html>
