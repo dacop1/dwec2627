@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <script>
+        function datos ( ) { //Datos de entrada ...
+            var x = [];
+            for (i = 0 ; i < 3 ; i++) {
+                x.push([]);
+                for (j = 0 ; j < 2 ; j++) {
+                    x[i].push( Number(prompt("Introduzca elemento : "+"["+i+"]"+"["+j+"]"))); //Guarda cada valor
+                }
+            }
+            parImpar(x);
+        }
+
+        function parImpar(x){ //Separa par de impares.
+            var pares=[];
+            var impares=[];
+            for (i = 0 ; i < 3 ; i++) {
+                for (j = 0 ; j < 2 ; j++) {
+                    if((x[i][j]%2)==0) {
+                        pares.push(x[i][j]);
+                    }else{
+                        impares.push(x[i][j]);
+                    }
+                }
+            }
+            alert (`Impares: ${impares}\nPares: ${pares}` )
+
+        }
+
+
+
+        datos ();
+    </script>
+</head>
+<body>
+</body>
+</html>

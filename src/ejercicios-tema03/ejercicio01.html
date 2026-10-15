@@ -10,7 +10,7 @@
 
             while (!salir) {
                 let opcion = prompt(
-                    "MENÚ\n" +
+                    "Ponemos aquí el menú...\n\n" +
                     "1. Elegir figura\n" +
                     "2. Introducir medidas\n" +
                     "3. Calcular volumen\n" +
@@ -21,8 +21,9 @@
                 switch (opcion) {
                     case "1":
                         figura = elegirFigura();
-                        medidas = null; // Reiniciar medidas si cambia la figura
+                        medidas = null;
                         break;
+
                     case "2":
                         if (figura) {
                             medidas = pedirMedidas(figura);
@@ -30,6 +31,7 @@
                             alert("Primero debes elegir una figura.");
                         }
                         break;
+
                     case "3":
                         if (figura && medidas) {
                             alert("Volumen: " + calcularVolumen(figura, medidas));
@@ -37,6 +39,7 @@
                             alert("Debes elegir figura y medidas primero.");
                         }
                         break;
+
                     case "4":
                         if (figura && medidas) {
                             alert("Área: " + calcularArea(figura, medidas));
@@ -44,10 +47,12 @@
                             alert("Debes elegir figura y medidas primero.");
                         }
                         break;
+
                     case "5":
                         salir = true;
                         alert("Programa finalizado.");
                         break;
+
                     default:
                         alert("Opción no válida.");
                 }
@@ -61,12 +66,13 @@
                 "2. Esfera\n" +
                 "3. Cilindro"
             );
+
             switch (opcion) {
                 case "1": return "cubo";
                 case "2": return "esfera";
                 case "3": return "cilindro";
                 default:
-                    alert("Figura no válida.");
+                    alert("Opción no válida.");
                     return null;
             }
         }
@@ -74,17 +80,21 @@
         function pedirMedidas(figura) {
             switch (figura) {
                 case "cubo":
-                    let lado = parseFloat(prompt("Introduce el lado:"));
+                    let lado = parseFloat(prompt("Introduce el lado del cubo:"));
                     return { lado: lado };
+
                 case "esfera":
-                    let radio = parseFloat(prompt("Introduce el radio:"));
+                    let radio = parseFloat(prompt("Introduce el radio de la esfera:"));
                     return { radio: radio };
+
                 case "cilindro":
-                    let radioC = parseFloat(prompt("Introduce el radio:"));
-                    let altura = parseFloat(prompt("Introduce la altura:"));
+                    let radioC = parseFloat(prompt("Introduce el radio del cilindro:"));
+                    let altura = parseFloat(prompt("Introduce la altura del cilindro:"));
                     return { radio: radioC, altura: altura };
+
                 default:
-                    alert("Figura no válida."); return null;
+                    alert("Figura no válida.");
+                    return null;
             }
         }
 
@@ -92,10 +102,13 @@
             switch (figura) {
                 case "cubo":
                     return Math.pow(medidas.lado, 3);
+
                 case "esfera":
                     return (4 / 3) * Math.PI * Math.pow(medidas.radio, 3);
+
                 case "cilindro":
                     return Math.PI * Math.pow(medidas.radio, 2) * medidas.altura;
+
                 default:
                     return "Figura no válida.";
             }
@@ -105,10 +118,13 @@
             switch (figura) {
                 case "cubo":
                     return 6 * Math.pow(medidas.lado, 2);
+
                 case "esfera":
                     return 4 * Math.PI * Math.pow(medidas.radio, 2);
+
                 case "cilindro":
                     return 2 * Math.PI * medidas.radio * (medidas.radio + medidas.altura);
+
                 default:
                     return "Figura no válida.";
             }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Temperaturas sin Globales</title>
+</head>
+<body>
+
+<script>
+
+    // --- Función para introducir temperaturas ---
+    function introducirTemperaturas(secciones, maquinas, sensores) {
+        const temperaturas = [];
+        for (let s = 0; s < secciones; s++) {
+            temperaturas.push([]);
+            for (let m = 0; m < maquinas; m++) {
+                temperaturas[s].push([]);
+                for (let t = 0; t < sensores; t++) {
+                    const valor = Number(prompt(
+                        `Introduce la temperatura (°C) para:\nSección ${s}, Máquina ${m}, Sensor ${t}:`
+                    ));
+                    temperaturas[s][m].push(valor);
+                }
+            }
+        }
+        //---------------------------------------------------------------------------------------
+
+        console.log(temperaturas);
+        return temperaturas;
+    }
+
+    // --- Función para calcular medias ---
+    function calcularMedias(temperaturas) {
+        let mensaje = "=== TEMPERATURA MEDIA POR MÁQUINA ===\n";
+        for (let s = 0; s < temperaturas.length; s++) {
+            for (let m = 0; m < temperaturas[s].length; m++) {
+                const suma = temperaturas[s][m].reduce((a, b) => a + b);
+                const media = (suma / temperaturas[s][m].length).toFixed(1);
+                mensaje += `Sección ${s} - Máquina ${m}: ${media} °C\n`;
+            }
+        }
+        alert(mensaje);
+    }
+
+    // --- Función para calcular máximo por sección ---
+    function maximoPorSeccion(temperaturas) {
+        let mensaje = "=== TEMPERATURA MÁXIMA POR SECCIÓN ===\n";
+        for (let s = 0; s < temperaturas.length; s++) {
+            let maxTemp = -Infinity;
+            for (let m = 0; m < temperaturas[s].length; m++) {
+                maxTemp=Math.max(...temperaturas[s][m]);
+            }
+            mensaje += `Sección ${s}: ${maxTemp} °C\n`;
+        }
+        alert(mensaje);
+    }
+
+    // --- Función para detectar sobrecalentamientos ---
+    function detectarSobrecalentamientos(temperaturas) {
+        let alertas = "";
+        for (let s = 0; s < temperaturas.length; s++) {
+            for (let m = 0; m < temperaturas[s].length; m++) {
+                for (let t = 0; t < temperaturas[s][m].length; t++) {
+                    if (temperaturas[s][m][t] > 100) {
+                        alertas += `Sobrecalentamiento en Sección ${s}, Máquina ${m}, Sensor ${t}: ${temperaturas[s][m][t]}°C\n`;
+                    }
+                }
+            }
+        }
+
+        if (alertas === "") {
+            alert("No se han detectado sobrecalentamientos.");
+        } else {
+            alert("=== ALERTAS DE SOBRECALENTAMIENTO ===\n" + alertas);
+        }
+    }
+
+    // --- Función principal  ---
+    function ejecutarControlTemperaturas() {
+        const secciones = 2;
+        const maquinas = 2;
+        const sensores = 2;
+
+        const datos = introducirTemperaturas(secciones, maquinas, sensores);
+        calcularMedias(datos);
+        maximoPorSeccion(datos);
+        detectarSobrecalentamientos(datos);
+    }
+
+    // --- Ejecutar programa ---
+    ejecutarControlTemperaturas();
+</script>
+</body>
+</html>
