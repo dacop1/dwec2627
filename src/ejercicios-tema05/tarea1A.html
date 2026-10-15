@@ -1,53 +1,40 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-</head>
-<body>
+    <meta charset="UTF-8" >
     <script>
-        function pedirMatriz(filas, columnas) {
-            matriz = [];
-
-            for (let i = 0; i < filas; i++) {
-                const fila = [];
-                for (let j = 0; j < columnas; j++) {
-                    const valor = Number(prompt(`Valor [${i}][${j}]:`));
-                    fila.push(valor);
+        function datos ( ) { //Datos de entrada ...
+            var x = [];
+            for (i = 0 ; i < 3 ; i++) {
+                x.push([]);
+                for (j = 0 ; j < 2 ; j++) {
+                    x[i].push( Number(prompt("Introduzca elemento : "+"["+i+"]"+"["+j+"]"))); //Guarda cada valor
                 }
-                matriz.push(fila);
             }
-
-            return matriz;
+            parImpar(x);
         }
 
-        function separarParesImpares(matriz) {
-            pares = [];
-            impares = [];
-
-            for (let i = 0; i < matriz.length; i++) {
-                for (let j = 0; j < matriz[i].length; j++) {
-                    if (matriz[i][j] % 2 === 0) {
-                        pares.push(matriz[i][j]);
-                    } else {
-                        impares.push(matriz[i][j]);
+        function parImpar(x){ //Separa par de impares.
+            var pares=[];
+            var impares=[];
+            for (i = 0 ; i < 3 ; i++) {
+                for (j = 0 ; j < 2 ; j++) {
+                    if((x[i][j]%2)==0) {
+                        pares.push(x[i][j]);
+                    }else{
+                        impares.push(x[i][j]);
                     }
                 }
             }
+            alert (`Impares: ${impares}\nPares: ${pares}` )
 
-            return { pares, impares };
         }
 
-        // Programa principal
-        filas = parseInt(prompt("Número de filas:"));
-        columnas = parseInt(prompt("Número de columnas:"));
 
-        matriz = pedirMatriz(filas, columnas);
-        resultado = separarParesImpares(matriz);
 
-        alert("Pares: [" + resultado.pares.join(", ") + "]\n" +
-            "Impares: [" + resultado.impares.join(", ") + "]");
+        datos ();
     </script>
+</head>
+<body>
 </body>
 </html>
