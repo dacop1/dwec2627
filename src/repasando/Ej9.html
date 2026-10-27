@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="primas()">Haga click para conocer como quedaría su sueldo despues de las primas </button>
+    <script>
+
+        function primas(){
+            let sueldo = Number(prompt("Introduce tu sueldo: "));
+            let antiguedad = Number(prompt("Introduce tu antiguedad : "));
+            let prima = sueldo;
+            
+            if (sueldo < 750 && antiguedad >= 10){
+                let prima = sueldo + (sueldo * 0.1);
+                alert("Tu sueldo aplicando una prima de un 10% quedaría: " + prima); 
+            } else if(sueldo >= 750 && antiguedad >= 10){
+                let prima = sueldo +  (sueldo * 0.05);
+                alert("Tu sueldo aplicando una prima de un 5% quedaría: " + prima);
+            } else {
+                alert("Usted no obtiene ninguna prima ");
+            }
+            
+            
+        }
+    </script>
+</body>
+</html>
