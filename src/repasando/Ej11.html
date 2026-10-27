@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuación de segundo grado</title>
+</head>
+<body>
+    <button onclick="ec()">Resolver ecuación</button>
+    <script>
+        function ec(){
+            let a = Number(prompt("Introduce el primer coeficiente de la ecuación ordenada: "));
+            let b = Number(prompt("Introduce el segundo coeficiente :"));
+            let c = Number(prompt("Introduce el ultimo coeficiente: "));
+            let raiz = b * b - 4 * a * c;
+
+            if (a !== 0){
+                if (raiz >= 0){
+                    let resultado1 = (-b + Math.sqrt(raiz)) / (2 * a);
+                    let resultado2 = (-b - Math.sqrt(raiz)) / (2 * a);
+                    alert("x1 = " + resultado1 + "\nx2 = " + resultado2);
+                } else {
+                    alert("No tiene soluciones reales");
+                }
+            } else {
+                alert("Si a es 0 no es una ecuación de segundo grado");
+            }
+        }
+    </script>
+</body>
+</html>
