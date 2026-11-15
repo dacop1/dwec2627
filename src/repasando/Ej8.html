@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="f1()">requisitos</button>
+    <script>
+        function f1(){
+            let n1 = Number(prompt("Introduce un  número"));
+            let n2 = Number(prompt("Introduce un  número"));
+            let n3 = Number(prompt("Introduce un  número"));
+
+            if((n1 < 100 && n1 > 10) && (n2 < 100 && n2 > 10) && (n3 < 100 && n3 > 10)  ){
+                alert("Esta todo correcto");
+            }else{
+                alert("No cumple todos los requisitos");
+            }
+            
+        }
+    </script>
+</body>
+</html>
